@@ -1,3 +1,6 @@
+# https://github.com/mperham/sidekiq/blob/master/examples/systemd/sidekiq.service
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#EnvironmentFile=
+
 #
 # This file tells systemd how to run Sidekiq as a 24/7 long-running daemon.
 #
@@ -41,6 +44,10 @@ Type=notify
 WatchdogSec=10
 
 WorkingDirectory=/opt/myapp/current
+
+# If you use .env, using and customizing this line could be very useful!!!
+EnvironmentFile=/opt/myapp/current/.env
+
 # If you use rbenv:
 # ExecStart=/bin/bash -lc 'exec /home/deploy/.rbenv/shims/bundle exec sidekiq -e production'
 # If you use the system's ruby:
